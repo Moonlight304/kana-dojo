@@ -465,10 +465,10 @@ function GoalTimersSidebar({
   goals: GoalTimer[];
   elapsedTime: number;
   goalTimers: {
-    addGoal: (label: string, targetSeconds: number) => void;
+    addGoal: AddGoalFn;
     removeGoal: (id: string) => void;
     clearGoals: () => void;
-    nextGoal: GoalTimer | null;
+    nextGoal: GoalTimer | undefined;
     progressToNextGoal: number;
   };
 }) {
