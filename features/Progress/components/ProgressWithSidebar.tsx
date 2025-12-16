@@ -3,20 +3,26 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import SimpleProgress from './SimpleProgress';
 import StreakProgress from './StreakProgress';
-import { TrendingUp, Flame } from 'lucide-react';
+import AchievementProgress from '@/features/Achievements/components/AchievementProgress';
+import { TrendingUp, Flame, Trophy } from 'lucide-react';
 import { useClick } from '@/shared/hooks/useAudio';
 import SidebarLayout from '@/shared/components/layout/SidebarLayout';
 
-type ViewType = 'statistics' | 'streak';
+type ViewType = 'statistics' | 'streak' | 'achievements';
 
 const viewOptions: { value: ViewType; label: string; icon: React.ReactNode }[] =
   [
     {
       value: 'statistics',
-      label: 'Statistics',
+      label: 'Stats',
       icon: <TrendingUp className='w-4 h-4' />
     },
-    { value: 'streak', label: 'Streak', icon: <Flame className='w-4 h-4' /> }
+    { value: 'streak', label: 'Streak', icon: <Flame className='w-4 h-4' /> },
+    {
+      value: 'achievements',
+      label: 'Achievements',
+      icon: <Trophy className='w-4 h-4' />
+    }
   ];
 
 const ProgressWithSidebar = () => {
@@ -48,7 +54,9 @@ const ProgressWithSidebar = () => {
           ))}
         </div>
       </div>
-      {currentView === 'statistics' ? <SimpleProgress /> : <StreakProgress />}
+      {currentView === 'statistics' && <SimpleProgress />}
+      {currentView === 'streak' && <StreakProgress />}
+      {currentView === 'achievements' && <AchievementProgress />}
     </SidebarLayout>
   );
 };

@@ -11,7 +11,6 @@ import {
   Sparkles,
   Star,
   TrendingUp,
-  Trophy,
   Volume2,
   Wind
 } from 'lucide-react';
@@ -149,19 +148,6 @@ const Sidebar = () => {
       >
         <TrendingUp />
         <span className='max-lg:hidden'>Progress</span>
-      </Link>
-      <Link
-        href='/achievements'
-        className={clsx(
-          'text-2xl  duration-250 transition-all lg:py-2 lg:px-4 max-lg:px-3 max-lg:py-2 rounded-xl lg:w-full flex max-lg:justify-center items-center gap-2',
-          pathWithoutLocale === '/achievements'
-            ? 'text-[var(--main-color)] bg-[var(--border-color)] lg:bg-[var(--card-color)]'
-            : 'hover:bg-[var(--card-color)] text-[var(--secondary-color)]'
-        )}
-        onClick={playClick}
-      >
-        <Trophy className='shrink-0' />
-        <span className='max-lg:hidden'>Achievements</span>
       </Link>
       <Link
         href='/preferences'
