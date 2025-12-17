@@ -10,9 +10,12 @@ interface RainDrop {
   romanji: string;
   speed: number;
   opacity: number;
+  startDelay: number;
 }
 
 const COLUMNS = 20;
+const MAX_DROPS = 60;
+const SPAWN_INTERVAL = 200;
 
 const KanaRain = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -27,40 +30,35 @@ const KanaRain = () => {
   useEffect(() => {
     if (!isMounted) return;
 
-    // Create initial drops
-    const initial: RainDrop[] = [];
-    for (let i = 0; i < 40; i++) {
+    const createDrop = (): RainDrop => {
       const kana = allKana[Math.floor(Math.random() * allKana.length)];
-      initial.push({
+      return {
         id: idCounter.current++,
         column: Math.floor(Math.random() * COLUMNS),
         kana: kana.kana,
         romanji: kana.romanji,
-        speed: Math.random() * 3 + 2,
-        opacity: Math.random() * 0.5 + 0.3
-      });
+        speed: Math.random() * 2 + 3, // 4-6 seconds
+        opacity: Math.random() * 0.4 + 0.4, // 0.4-0.8
+        startDelay: Math.random() * 5 // 0-5 seconds into animation
+      };
+    };
+
+    // Create 40 initial drops spread throughout the screen
+    const initial: RainDrop[] = [];
+    for (let i = 0; i < 40; i++) {
+      initial.push(createDrop());
     }
     setDrops(initial);
 
-    // Add new drops
+    // Spawn a new drop every 300ms
     const interval = setInterval(() => {
-      const kana = allKana[Math.floor(Math.random() * allKana.length)];
       setDrops(prev => {
-        const newDrop: RainDrop = {
-          id: idCounter.current++,
-          column: Math.floor(Math.random() * COLUMNS),
-          kana: kana.kana,
-          romanji: kana.romanji,
-          speed: Math.random() * 3 + 2,
-          opacity: Math.random() * 0.5 + 0.3
-        };
+        const newDrop = createDrop();
         const updated = [...prev, newDrop];
-        if (updated.length > 60) {
-          return updated.slice(-60);
-        }
-        return updated;
+        // Keep only the 60 most recent drops
+        return updated.length > MAX_DROPS ? updated.slice(-MAX_DROPS) : updated;
       });
-    }, 200);
+    }, SPAWN_INTERVAL);
 
     return () => clearInterval(interval);
   }, [isMounted]);
@@ -69,16 +67,14 @@ const KanaRain = () => {
 
   return (
     <div className='relative flex-1 min-h-[80vh] overflow-hidden'>
-      {/* Rain drops */}
       {drops.map(drop => (
         <div
           key={drop.id}
-          className='absolute text-2xl md:text-3xl cursor-default select-none'
+          className='absolute text-2xl md:text-3xl cursor-default select-none will-change-transform'
           style={{
             left: `${(drop.column / COLUMNS) * 100 + 2.5}%`,
-            opacity: hoveredId === drop.id ? 1 : drop.opacity,
             animation: `rain-fall ${drop.speed}s linear infinite`,
-            animationDelay: `${Math.random() * -drop.speed}s`
+            animationDelay: `-${drop.startDelay}s`
           }}
           onMouseEnter={() => setHoveredId(drop.id)}
           onMouseLeave={() => setHoveredId(null)}
@@ -89,6 +85,9 @@ const KanaRain = () => {
               'text-[var(--main-color)] transition-all duration-200',
               hoveredId === drop.id && 'text-green-400 scale-150'
             )}
+            style={{
+              opacity: hoveredId === drop.id ? 1 : drop.opacity
+            }}
           >
             {drop.kana}
           </span>
@@ -99,15 +98,13 @@ const KanaRain = () => {
           )}
         </div>
       ))}
-
-      {/* CSS animation */}
       <style jsx>{`
         @keyframes rain-fall {
           0% {
-            top: -5%;
+            transform: translateY(-5vh);
           }
           100% {
-            top: 105%;
+            transform: translateY(105vh);
           }
         }
       `}</style>
