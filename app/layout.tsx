@@ -20,6 +20,10 @@ export const viewport: Viewport = {
   initialScale: 1.0,
   maximumScale: 5.0,
   userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -43,7 +47,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: googleVerificationToken,
-    other: { 'msvalidate.01': msVerificationToken },
+    other: {
+      'msvalidate.01': msVerificationToken,
+      'msapplication-TileColor': '#667eea',
+      'msapplication-config': '/browserconfig.xml',
+    },
   },
   keywords: [
     'learn japanese',
@@ -100,6 +108,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
