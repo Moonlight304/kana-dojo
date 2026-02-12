@@ -105,12 +105,12 @@
     "id": 18,
     "fact": "There are cat cafes in Japan where you pay by the hour to pet cats, but there are also owl cafes, hedgehog cafes, snake cafes, and even penguin bars.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 19,
     "fact": "Japanese convenience stores (konbini) are so advanced that over 70% of bills in Japan are paid there, not at banks.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
