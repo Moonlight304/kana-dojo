@@ -6,7 +6,7 @@
  *
  * Each entry corresponds to a source image that was processed into
  * AVIF + WebP at 1920w, 2560w, and 3840w sizes in public/wallpapers/.
- * 
+ *
  * The 2560w size is served by default for optimal quality on modern displays.
  */
 
