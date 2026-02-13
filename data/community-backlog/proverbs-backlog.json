@@ -1382,7 +1382,7 @@
     "romaji": "Naki tsura ni hachi",
     "english": "A bee on a crying face",
     "meaning": "Misfortune piles up",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1391,7 +1391,7 @@
     "romaji": "Nou aru taka wa tsume wo kakusu",
     "english": "A skilled hawk hides its talons",
     "meaning": "True skill is modest",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1400,7 +1400,7 @@
     "romaji": "Saru mo ki kara ochiru",
     "english": "Even monkeys fall from trees",
     "meaning": "Experts make mistakes",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1409,7 +1409,7 @@
     "romaji": "Fukusui bon ni kaerazu",
     "english": "Spilled water doesn’t return to the tray",
     "meaning": "What’s done is done",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1418,7 +1418,7 @@
     "romaji": "Yake ishi ni mizu",
     "english": "Water on a hot stone",
     "meaning": "A futile effort",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1427,7 +1427,7 @@
     "romaji": "Nasake wa hito no tame narazu",
     "english": "Kindness is not for others alone",
     "meaning": "Kindness comes back to you",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1436,7 +1436,7 @@
     "romaji": "Ishibashi wo tataite wataru",
     "english": "Tap a stone bridge before crossing",
     "meaning": "Be very cautious",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1445,7 +1445,7 @@
     "romaji": "Issun saki wa yami",
     "english": "An inch ahead is darkness",
     "meaning": "The future is uncertain",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1455,7 +1455,7 @@
     "english": "Good fortune comes to a laughing home",
     "meaning": "Happiness invites luck",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 163,
@@ -1463,7 +1463,7 @@
     "romaji": "Ugo no takenoko",
     "english": "Bamboo shoots after rain",
     "meaning": "Things spring up rapidly",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1472,7 +1472,7 @@
     "romaji": "Senri no michi mo ippo kara",
     "english": "A journey of a thousand miles begins with one step",
     "meaning": "Start small",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -1481,7 +1481,7 @@
     "romaji": "Hayaoki wa sanmon no toku",
     "english": "Early rising brings three coins of benefit",
     "meaning": "Wake early for advantage",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
