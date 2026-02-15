@@ -17,7 +17,6 @@ import {
 import { cn } from '@/shared/lib/utils';
 
 const STREAK_TABS_HALO_GAP = 8;
-const STREAK_INFO_CARD_HALO_GAP = 8;
 
 const periodOptions: { value: TimePeriod; label: string; icon: LucideIcon }[] =
   [
@@ -120,27 +119,14 @@ export default function StreakProgress() {
       <StreakGrid visits={visits} period={period} />
 
       {/* Instructions */}
-      <div
-        className='rounded-(--streak-info-card-outer-radius) border-4 border-(--border-color) p-(--streak-info-card-halo-gap)'
-        style={
-          {
-            '--streak-info-card-halo-gap': `${STREAK_INFO_CARD_HALO_GAP}px`,
-            '--streak-info-card-outer-radius':
-              'calc(var(--radius-2xl) + var(--streak-info-card-halo-gap))',
-            '--streak-info-card-inner-radius':
-              'calc(var(--streak-info-card-outer-radius) - var(--streak-info-card-halo-gap))',
-          } as CSSProperties
-        }
-      >
-        <div className='rounded-(--streak-info-card-inner-radius) bg-(--card-color) p-4'>
-          <h3 className='pb-2 font-semibold text-(--main-color)'>
-            How Streak Tracking Works
-          </h3>
-          <div className='space-y-2 text-sm text-(--secondary-color)'>
-            <p>• Your visits are automatically tracked when you use KanaDojo</p>
-            <p>• Each day you visit counts toward your streak</p>
-            <p>• Keep your streak going by visiting daily!</p>
-          </div>
+      <div className='rounded-2xl border border-(--border-color) bg-(--card-color) p-4'>
+        <h3 className='pb-2 font-semibold text-(--main-color)'>
+          How Streak Tracking Works
+        </h3>
+        <div className='space-y-2 text-sm text-(--secondary-color)'>
+          <p>• Your visits are automatically tracked when you use KanaDojo</p>
+          <p>• Each day you visit counts toward your streak</p>
+          <p>• Keep your streak going by visiting daily!</p>
         </div>
       </div>
     </div>

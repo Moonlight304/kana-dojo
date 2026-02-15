@@ -1,8 +1,8 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import type { CSSProperties } from 'react';
 import { cn } from '@/shared/lib/utils';
 import { Trophy, Star, Award, ChevronRight } from 'lucide-react';
 import type { AchievementSummary } from '../../types/stats';
@@ -43,7 +43,7 @@ function StatItem({
       <div
         className={cn(
           'flex h-14 w-14 items-center justify-center rounded-2xl',
-          'bg-gradient-to-br from-(--main-color)/10 to-(--secondary-color)/5',
+          'bg-linear-to-br from-(--main-color)/10 to-(--secondary-color)/5',
           'border border-(--border-color)/30',
           'text-(--main-color)',
         )}
@@ -94,7 +94,7 @@ export default function AchievementSummaryBar({
     >
       <div className='group relative overflow-hidden rounded-(--achievement-summary-inner-radius) bg-(--card-color) p-6'>
         {/* Decorative trophy glow */}
-        <div className='pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-gradient-to-br from-(--main-color)/10 to-transparent blur-3xl' />
+        <div className='pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-linear-to-br from-(--main-color)/10 to-transparent blur-3xl' />
 
         <div className='relative z-10 flex flex-col gap-6'>
           {/* Header with animated trophy */}
@@ -103,7 +103,7 @@ export default function AchievementSummaryBar({
               <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
-                className='flex h-14 w-14 items-center justify-center rounded-2xl border border-(--main-color)/20 bg-gradient-to-br from-(--main-color)/20 to-(--secondary-color)/10'
+                className='flex h-14 w-14 items-center justify-center rounded-2xl border border-(--main-color)/20 bg-linear-to-br from-(--main-color)/20 to-(--secondary-color)/10'
               >
                 <Trophy className='h-7 w-7 text-(--main-color)' />
               </motion.div>
@@ -153,7 +153,7 @@ export default function AchievementSummaryBar({
           <div className='space-y-3'>
             <div className='relative h-4 overflow-hidden rounded-full bg-(--background-color)'>
               <motion.div
-                className='absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-(--secondary-color) to-(--main-color)'
+                className='absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-(--secondary-color) to-(--main-color)'
                 initial={{ width: 0 }}
                 animate={{ width: `${progressPercent}%` }}
                 transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
@@ -197,5 +197,4 @@ export function getAchievementDisplayValues(summary: AchievementSummary): {
     progressPercent: `${progressPercent.toFixed(0)}%`,
   };
 }
-
 
