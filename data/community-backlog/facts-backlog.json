@@ -26,7 +26,7 @@
   {
     "id": 5,
     "fact": "Japan's Aokigahara forest, also called the Sea of Trees, is so dense that GPS devices and compasses often malfunction due to the iron-rich volcanic soil.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
