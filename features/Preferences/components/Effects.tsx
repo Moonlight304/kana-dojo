@@ -36,6 +36,30 @@ const ORDERED_CLICK_EFFECTS = CLICK_EFFECT_MANUAL_ORDER.map(
   id => clickEffectById.get(id)!,
 );
 
+const EMOJI_RAIN_POSITIONS = [
+  { top: '-22%', left: '-10%', size: 'text-xl', opacity: 'opacity-70' },
+  { top: '-12%', left: '34%', size: 'text-2xl', opacity: 'opacity-80' },
+  { top: '-18%', left: '76%', size: 'text-xl', opacity: 'opacity-65' },
+  { top: '14%', left: '-14%', size: 'text-2xl', opacity: 'opacity-75' },
+  { top: '16%', left: '24%', size: 'text-xl', opacity: 'opacity-90' },
+  { top: '10%', left: '66%', size: 'text-2xl', opacity: 'opacity-80' },
+  { top: '48%', left: '4%', size: 'text-xl', opacity: 'opacity-75' },
+  { top: '54%', left: '44%', size: 'text-2xl', opacity: 'opacity-90' },
+  { top: '46%', left: '88%', size: 'text-xl', opacity: 'opacity-70' },
+  { top: '82%', left: '-8%', size: 'text-xl', opacity: 'opacity-65' },
+  { top: '88%', left: '30%', size: 'text-2xl', opacity: 'opacity-80' },
+  { top: '86%', left: '72%', size: 'text-xl', opacity: 'opacity-70' },
+  { top: '96%', left: '98%', size: 'text-2xl', opacity: 'opacity-75' },
+] as const;
+
+function getStableOffset(seed: string): number {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  }
+  return hash % EMOJI_RAIN_POSITIONS.length;
+}
+
 // ─── Effect card ─────────────────────────────────────────────────────────────
 
 function EffectCard({
@@ -51,10 +75,13 @@ function EffectCard({
   onSelect: () => void;
   group: 'cursor-trail' | 'click';
 }) {
+  const rainEmoji = emoji || '•';
+  const offset = getStableOffset(`${group}-${name}`);
+
   return (
     <label
       className={clsx(
-        'flex flex-col items-center justify-center gap-1',
+        'relative h-20 overflow-hidden',
         buttonBorderStyles,
         'border-1 border-(--card-color)',
         'cursor-pointer px-2 py-2.5',
@@ -70,13 +97,27 @@ function EffectCard({
         className='hidden'
         onChange={onSelect}
         checked={isSelected}
+        aria-label={name}
       />
-      {emoji ? (
-        <span className='text-2xl leading-none'>{emoji}</span>
-      ) : (
-        <span className='text-base leading-none text-(--secondary-color)'>—</span>
-      )}
-      <span className='text-center text-xs leading-tight'>{name}</span>
+      {EMOJI_RAIN_POSITIONS.map((slot, i) => {
+        const p = EMOJI_RAIN_POSITIONS[
+          (i + offset) % EMOJI_RAIN_POSITIONS.length
+        ];
+        return (
+          <span
+            key={`${group}-${name}-${i}`}
+            className={clsx(
+              'pointer-events-none absolute leading-none select-none',
+              p.size,
+              p.opacity,
+            )}
+            style={{ top: p.top, left: p.left }}
+            aria-hidden='true'
+          >
+            {rainEmoji}
+          </span>
+        );
+      })}
     </label>
   );
 }
