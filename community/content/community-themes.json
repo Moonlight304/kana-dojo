@@ -370,5 +370,17 @@
     "backgroundColor": "oklch(20.0% 0.045 35.0 / 1)",
     "mainColor": "oklch(70.0% 0.165 30.0 / 1)",
     "secondaryColor": "oklch(80.0% 0.115 65.0 / 1)"
+  },
+  {
+    "id": "sumo-strength",
+    "name": "Sumo Strength",
+    "author": "Jota e Dupla",
+    "colors": {
+      "background": "#F5E6D3",
+      "primary": "#8B0000",
+      "secondary": "#D2B48C",
+      "text": "#2C1E16",
+      "accent": "#FF4500"
+    }
   }
 ]
